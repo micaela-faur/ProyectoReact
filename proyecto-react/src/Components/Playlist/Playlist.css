@@ -1,9 +1,9 @@
-.container{
-    box-shadow: 0 0 9px 9px #cccc;   
+.container{   
     margin-bottom: 20px;   
     border-radius: 10px;    
     padding: 10px;
-    width: 200px;
+    width: 100%;
+    display: block;
     
 }
 
