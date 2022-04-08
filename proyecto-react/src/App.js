@@ -19,7 +19,7 @@ function App() {
       </header>
 
       <main>
-          <button type="button">Cargar más tarjetas</button>
+          <button className="botonMas" type="button">Cargar más tarjetas</button>
           <section class="card-container">
             <Playlist/> 
           </section>

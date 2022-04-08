@@ -2,24 +2,31 @@
     text-align: center;
     border-color: black;
     border-style: solid;
-    width: 30%;
     border-radius: 20px;
-    float: left;
-    margin-right: 3%;
-    background-color: rgb(219, 253, 219);
-
+    box-shadow: 0 0 9px 9px rgb(204, 204, 204);
+    background-color: rgb(156, 231, 162) ;
+    font-size: small;
+    align-items: center;
+    margin: 20px;
 }
 
 .tarjeta img {
-    border: black;
+  border: black;
   border-style: solid;
   border-radius: 20px;
-  width: 80%;
+  width: 40%;
   margin-top: 10%;
   border-width: 4px;
 }
 
 .titulo{
-    color: red;
-    font-size: 25px;
+  color: red;
+  text-align: center;
 }
+
+.boton{
+  border-radius: 5px;
+  padding: 5px;
+  margin: 10px;
+}
+ 
