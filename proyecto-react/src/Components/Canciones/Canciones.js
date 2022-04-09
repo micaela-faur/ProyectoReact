@@ -17,7 +17,7 @@ class Canciones extends Component{
                 
                 <main class="tarjeta">
                     <img src={this.props.artistas.artist.picture} alt={this.props.artistas} /> 
-                    <h3 class="titulo" >Título: {this.props.artistas.title} </h3>
+                    <h3 className="titulo" >Título: {this.props.artistas.title} </h3>
                     <h3>Artista: {this.props.artistas.artist.name} </h3>
                     <section class="aditional-info"> 
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse qui atque.</p> 
