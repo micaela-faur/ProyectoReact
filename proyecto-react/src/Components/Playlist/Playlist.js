@@ -1,6 +1,8 @@
 import React, {Component} from 'react'; 
 import Canciones from "../Canciones/Canciones";
 import './Playlist.css';
+import Buscador from "../Buscador/Buscador";
+
 
 
 
@@ -10,17 +12,19 @@ class Playlist extends Component{
         super(props);
         this.state={
             datos: [],
-            limit: 20
+            limit: 10,
+        
         }
     }
     
 
     componentDidMount(){
-        let url = 'https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks&top?limit' + this.state.limit
+        let url = 'https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks&top?limit=' + this.state.limit
         fetch(url)
         .then(response => response.json()) // transofrma los datos que vienen de la API en Json
         .then( info => this.setState({
-            datos: info.data
+            datos: info.data,
+            limit: this.state.limit + 10
         }))
         .catch(error => console.log(error))
     } 
@@ -37,10 +41,38 @@ class Playlist extends Component{
 
 
     }
+// 
+    pedirMas(){
+        let url2 = 'https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks&top?limit=' + this.state.limit 
+        fetch(url2)
+        .then(response => response.json())
+        .then(data => this.setState({
+        datos: data.data , 
+        limit: this.state.limit + 10    
+        }))
+
+
+    }
+
+    filtrarCanciones(textoAFiltrar){
+        let cancionesAFiltrar = [];
+        cancionesAFiltrar = this.state.datos.filter(filtrado  => filtrado.title.toLowerCase().includes(textoAFiltrar.toLowerCase()))
+        this.setState({
+            datos: cancionesAFiltrar
+        }) 
+
+
+    }
 
     render(){
         console.log(this.state.datos);
         return(
+            <React.Fragment> 
+            <div className="botonMas"> 
+                <Buscador cancionesAFiltrar={(filtrar)=> this.filtrarCanciones(filtrar)} /> 
+                <button type='button' onClick={() => this.pedirMas() }> Pedir Mas </button> 
+            </div>
+
             <div className = 'container' >
                 {this.state.datos === '' ? // if ternario: creamos un condicional porque si tarta en traer la info de la api, que me tire cargando, y sino que me traiga del estado el array con toda la info de las canciones.
                 <h3> Cargando... </h3> :  
@@ -48,7 +80,7 @@ class Playlist extends Component{
                 artistas={cancion} borrarCancion = { (id)=> this.borrar(id)} />)  }
                
             </div>
-
+            </React.Fragment>
         )
 
     }
