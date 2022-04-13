@@ -8,7 +8,9 @@ class Canciones extends Component{
             datos: [],
         }
     }
-    
+    verMas(){
+        
+    }
 
     render(){
         console.log(this.props);
@@ -22,7 +24,7 @@ class Canciones extends Component{
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse qui atque.</p> 
                 </section>
                 <button className= "boton" type="button" onClick={()=> this.props.borrarCancion(this.props.artistas.id)}>Eliminar</button>
-                <button className= "boton"> Ver más </button> 
+                <button className= "boton" > Ver más </button> 
             </main>
                  
 

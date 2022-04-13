@@ -4,9 +4,6 @@ import './Playlist.css';
 import Buscador from "../Buscador/Buscador";
 
 
-
-
-
 class Playlist extends Component{
     constructor(props){
         super(props);
@@ -43,6 +40,7 @@ class Playlist extends Component{
     }
 // 
     pedirMas(){
+        console.log('hola')
         let url2 = 'https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks&top?limit=' + this.state.limit 
         fetch(url2)
         .then(response => response.json())
@@ -74,8 +72,9 @@ class Playlist extends Component{
             </div>
 
             <div className = 'container' >
-                {this.state.datos === '' ? // if ternario: creamos un condicional porque si tarta en traer la info de la api, que me tire cargando, y sino que me traiga del estado el array con toda la info de las canciones.
-                <h3> Cargando... </h3> :  
+                {this.state.datos.length === 0 ? // if ternario: creamos un condicional porque si tarta en traer la info de la api, que me tire cargando, y sino que me traiga del estado el array con toda la info de las canciones.
+               //<h3> Cargando ...</h3> :
+               <img src= "/imagenes/gifloader.gif" alt= "" /> :  
                 this.state.datos.map((cancion, idx) => <Canciones key={cancion.datos + idx} 
                 artistas={cancion} borrarCancion = { (id)=> this.borrar(id)} />)  }
                
