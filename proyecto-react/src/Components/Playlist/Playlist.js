@@ -10,6 +10,7 @@ class Playlist extends Component{
         this.state={
             datos: [],
             limit: 10,
+            ordenCanciones: "filas",
         
         }
     }
@@ -62,6 +63,18 @@ class Playlist extends Component{
 
     }
 
+    filas(){
+        this.setState({
+            ordenCanciones: "filas"
+        })
+    }
+
+    columnas(){
+        this.setState({
+            ordenCanciones: "columnas"
+        })
+    }
+
     render(){
         console.log(this.state.datos);
         return(
@@ -70,6 +83,17 @@ class Playlist extends Component{
                 <Buscador cancionesAFiltrar={(filtrar)=> this.filtrarCanciones(filtrar)} /> 
                 <button type='button' onClick={() => this.pedirMas() }> Pedir Mas </button> 
             </div>
+
+            <div className='orientacion'>
+                <button onClick={() =>this.filas()}> Filas </button>
+                <button onClick={() =>this.columnas()}> Columnas </button>
+
+            </div>
+
+            <section className ={this.state.ordenCanciones == "filas" ? "filas" : "columnas" }> 
+
+
+            </section>
 
             <div className = 'container' >
                 {this.state.datos.length === 0 ? // if ternario: creamos un condicional porque si tarta en traer la info de la api, que me tire cargando, y sino que me traiga del estado el array con toda la info de las canciones.

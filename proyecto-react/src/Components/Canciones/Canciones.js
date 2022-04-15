@@ -6,10 +6,22 @@ class Canciones extends Component{
         super(props);
         this.state={
             datos: [],
-        }
+            descripcion: false, // Situacion inicial: se ve el boton de ver mas y la descripcion esta oculta por eso el valor: false
+            botonDescripcion: "Ver más",
+        };
     }
     verMas(){
-        
+        if (this.state.descripcion){
+            this.setState({
+                descripcion: false,
+                botonDescripcion: "Ver más",
+            });
+        } else {
+            this.setState({
+                descripcion: true,
+                botonDescripcion: "Ver menos",
+        });
+    } 
     }
 
     render(){
@@ -20,11 +32,12 @@ class Canciones extends Component{
                 <img src={this.props.artistas.artist.picture} alt={this.props.artistas} /> 
                 <h3 className="titulo" >Título: {this.props.artistas.title} </h3>
                 <h3>Artista: {this.props.artistas.artist.name} </h3>
-                <section class="aditional-info"> 
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse qui atque.</p> 
+                <section className= {this.state.descripcion ? "aditional-info-show" : "aditional-info"} > 
+                    <p>Duracion: {this.props.artistas.duration} seconds</p>
+                    <p>Ranking: {this.props.artistas.rank} </p> 
                 </section>
                 <button className= "boton" type="button" onClick={()=> this.props.borrarCancion(this.props.artistas.id)}>Eliminar</button>
-                <button className= "boton" > Ver más </button> 
+                <button className= "boton" onClick={()=> this.verMas()} > {this.state.botonDescripcion} </button> 
             </main>
                  
 
