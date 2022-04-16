@@ -98,7 +98,7 @@ class Playlist extends Component{
             <div className = 'container' >
                 {this.state.datos.length === 0 ? // if ternario: creamos un condicional porque si tarta en traer la info de la api, que me tire cargando, y sino que me traiga del estado el array con toda la info de las canciones.
                //<h3> Cargando ...</h3> :
-               <img src= "/imagenes/gifloader.gif" alt= "" /> :  
+               <img className='loader' src= "/imagenes/gifloader.gif" alt= "" /> :  
                 this.state.datos.map((cancion, idx) => <Canciones key={cancion.datos + idx} 
                 artistas={cancion} borrarCancion = { (id)=> this.borrar(id)} />)  }
                

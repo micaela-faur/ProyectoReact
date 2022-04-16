@@ -1,6 +1,7 @@
 import React from 'react';
 import Playlist from "./Components/Playlist/Playlist"
 import Canciones from "./Components/Canciones/Canciones"
+import Footer from './Components/Footer/Footer';
 
 
 function App() {
@@ -22,8 +23,12 @@ function App() {
           </section>
 
       </main>
+    <section class= "section-footer">
+      <Footer/> 
 
+    </section>
     </div>
+    
 
   );
 }
