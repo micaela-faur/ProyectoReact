@@ -81,7 +81,7 @@ class Playlist extends Component{
             <React.Fragment> 
             <div className="botonMas"> 
                 <Buscador cancionesAFiltrar={(filtrar)=> this.filtrarCanciones(filtrar)} /> 
-                <button type='button' onClick={() => this.pedirMas() }> Pedir Mas </button> 
+                <button className="pm" type='button' onClick={() => this.pedirMas() }> Pedir Mas </button> 
             </div>
 
             <div className='orientacion'>

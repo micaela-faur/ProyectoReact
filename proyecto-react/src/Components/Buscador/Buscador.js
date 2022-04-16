@@ -37,9 +37,10 @@ constructor(props){
     render(){
         
         return(
-            <form  onSubmit={(event)=>this.evitarDefault(event)}>
-                <input onChange={(cambios)=>this.obtenerDatos(cambios)} type= "text" name="busqueda" placeholder="Ingrese Busqueda" value ={this.state.busqueda} /> 
-                <button type= "submit" >Enviar</button>
+            <form onSubmit={(event)=>this.evitarDefault(event)}>
+                <input className="buscador" onChange={(cambios)=>this.obtenerDatos(cambios)} type= "text" name="busqueda" placeholder="Ingrese Busqueda" value ={this.state.busqueda}/> 
+                <button className="enviar" type= "submit" >Enviar</button>
+                
             </form>
         )
     }

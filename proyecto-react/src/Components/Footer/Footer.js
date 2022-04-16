@@ -3,7 +3,8 @@ import React from 'react'
 function Footer(){
     return(
         <div className="footer">
-    <h3>Micaela Faur, Sofía Cortes y Tommy Cohen</h3>
+    <h1>Micaela Faur, Sofía Cortes y Tommy Cohen</h1>
+    <p>Programacion III -  2022</p>
     </div>
     )
 }

@@ -1,3 +1,11 @@
 .buscador{
-    align-items: center;
+    text-align: center;
+    padding: 10px 70px 10px 70px;
+}
+
+.enviar{
+    border: solid 1px var(--light-gray);
+    padding: 10px 10px 10px 10px;
+    border-radius: 3px;
+    margin-left: 5px;
 }
