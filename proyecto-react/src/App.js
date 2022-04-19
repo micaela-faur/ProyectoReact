@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="body"> 
       <header>
-        <h1 className="tituloApp">Nombre de la App</h1>
+        <h1 className="tituloApp">DEEZER</h1>
           <section>
               <i class="fas fa-th"></i>
               <i class="fas fa-align-justify"></i>

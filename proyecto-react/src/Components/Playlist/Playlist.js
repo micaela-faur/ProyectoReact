@@ -10,7 +10,7 @@ class Playlist extends Component{
         this.state={
             datos: [],
             limit: 10,
-            ordenCanciones: "filas",
+            ordenCanciones: "columnas",
         
         }
     }
@@ -90,19 +90,29 @@ class Playlist extends Component{
 
             </div>
 
-            <section className ={this.state.ordenCanciones == "filas" ? "filas" : "columnas" }> 
-
-
-            </section>
+           
+             <section className={` ${this.state.ordenCanciones ==  "columnas" ?
+        "columnas" :
+        "filas"}`}>
 
             <div className = 'container' >
-                {this.state.datos.length === 0 ? // if ternario: creamos un condicional porque si tarta en traer la info de la api, que me tire cargando, y sino que me traiga del estado el array con toda la info de las canciones.
-               //<h3> Cargando ...</h3> :
-               <img className='loader' src= "/imagenes/gifloader.gif" alt= "" /> :  
-                this.state.datos.map((cancion, idx) => <Canciones key={cancion.datos + idx} 
-                artistas={cancion} borrarCancion = { (id)=> this.borrar(id)} />)  }
+
+           
+
+            {this.state.datos.length === 0 ? // if ternario: creamos un condicional porque si tarta en traer la info de la api, que me tire cargando, y sino que me traiga del estado el array con toda la info de las canciones.
+              // <h3> Cargando ...</h3>
+
+            
                
-            </div>
+            
+                <img className='loader' src= "/imagenes/gifloader.gif" alt= "" /> : 
+                this.state.datos.length === 0 ? 
+                <h3> No hay datos que coincidan con su busqueda </h3> :
+                this.state.datos.map((cancion, idx) => <Canciones key={cancion.title + idx} 
+                artistas={cancion} borrarCancion = { (id)=> this.borrar(id)} />)  }
+            </div> 
+            
+            </section>
             </React.Fragment>
         )
 
