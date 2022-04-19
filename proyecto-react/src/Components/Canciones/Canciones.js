@@ -27,8 +27,8 @@ class Canciones extends Component{
     render(){
         console.log(this.props);
         return(
-                
-            <main class="tarjeta">
+            <React.Fragment>
+            <main className="tarjeta">
                 <img src={this.props.artistas.artist.picture} alt={this.props.artistas} /> 
                 <h3 className="titulo" >Título: {this.props.artistas.title} </h3>
                 <h3>Artista: {this.props.artistas.artist.name} </h3>
@@ -39,8 +39,11 @@ class Canciones extends Component{
                 <button className= "boton" type="button" onClick={()=> this.props.borrarCancion(this.props.artistas.id)}>Eliminar</button>
                 <button className= "boton" onClick={()=> this.verMas()} > {this.state.botonDescripcion} </button> 
             </main>
+            <div>
+                
+            </div>
                  
-
+</React.Fragment>     
         )
     }
     

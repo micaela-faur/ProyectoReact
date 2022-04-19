@@ -8,9 +8,10 @@ class Playlist extends Component{
     constructor(props){
         super(props);
         this.state={
-            datos: [],
+            datos: undefined, // tipo de datoq no esta definido
             limit: 10,
             ordenCanciones: "columnas",
+            datosModificado: undefined
         
         }
     }
@@ -22,6 +23,7 @@ class Playlist extends Component{
         .then(response => response.json()) // transofrma los datos que vienen de la API en Json
         .then( info => this.setState({
             datos: info.data,
+            datosModificado: info.data,
             limit: this.state.limit + 10
         }))
         .catch(error => console.log(error))
@@ -47,6 +49,7 @@ class Playlist extends Component{
         .then(response => response.json())
         .then(data => this.setState({
         datos: data.data , 
+        datosModificado: data.data,
         limit: this.state.limit + 10    
         }))
 
@@ -57,7 +60,7 @@ class Playlist extends Component{
         let cancionesAFiltrar = [];
         cancionesAFiltrar = this.state.datos.filter(filtrado  => filtrado.title.toLowerCase().includes(textoAFiltrar.toLowerCase()))
         this.setState({
-            datos: cancionesAFiltrar
+            datosModificado: cancionesAFiltrar
         }) 
 
 
@@ -76,7 +79,8 @@ class Playlist extends Component{
     }
 
     render(){
-        console.log(this.state.datos);
+        console.log('hola', this.state.datosModificado);
+       
         return(
             <React.Fragment> 
             <div className="botonMas"> 
