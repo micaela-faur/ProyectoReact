@@ -8,9 +8,10 @@ class Playlist extends Component{
     constructor(props){
         super(props);
         this.state={
-            datos: [],
+            datos: undefined, // tipo de datoq no esta definido
             limit: 10,
             ordenCanciones: "columnas",
+            datosModificado: undefined
         
         }
     }
@@ -22,6 +23,7 @@ class Playlist extends Component{
         .then(response => response.json()) // transofrma los datos que vienen de la API en Json
         .then( info => this.setState({
             datos: info.data,
+            datosModificado: info.data,
             limit: this.state.limit + 10
         }))
         .catch(error => console.log(error))
@@ -47,6 +49,7 @@ class Playlist extends Component{
         .then(response => response.json())
         .then(data => this.setState({
         datos: data.data , 
+        datosModificado: data.data,
         limit: this.state.limit + 10    
         }))
 
@@ -57,7 +60,7 @@ class Playlist extends Component{
         let cancionesAFiltrar = [];
         cancionesAFiltrar = this.state.datos.filter(filtrado  => filtrado.title.toLowerCase().includes(textoAFiltrar.toLowerCase()))
         this.setState({
-            datos: cancionesAFiltrar
+            datosModificado: cancionesAFiltrar
         }) 
 
 
@@ -76,7 +79,8 @@ class Playlist extends Component{
     }
 
     render(){
-        console.log(this.state.datos);
+        console.log('hola', this.state.datosModificado);
+       
         return(
             <React.Fragment> 
             <div className="botonMas"> 
@@ -90,26 +94,19 @@ class Playlist extends Component{
 
             </div>
 
-           
              <section className={` ${this.state.ordenCanciones ==  "columnas" ?
         "columnas" :
         "filas"}`}>
 
             <div className = 'container' >
-
-           
-
-            {this.state.datos.length === 0 ? // if ternario: creamos un condicional porque si tarta en traer la info de la api, que me tire cargando, y sino que me traiga del estado el array con toda la info de las canciones.
-              // <h3> Cargando ...</h3>
-
+               {this.state.datosModificado ?  // si existe datos 
+               this.state.datosModificado.length > 0 ? // fijate si tienen la length mayor  a cero
+               this.state.datosModificado.map((cancion, idx) => <Canciones key={cancion.title + idx} // si es asi haceme el map
+                artistas={cancion} borrarCancion = { (id)=> this.borrar(id)} />) : 
+                <h3> No hay datos que coincidan con su busqueda </h3> : // si false osea si no existen datos me tira el loader
+                <img className='loader' src= "/imagenes/gifloader.gif" alt= "" />
+                   }
             
-               
-            
-                <img className='loader' src= "/imagenes/gifloader.gif" alt= "" /> : 
-                this.state.datos.length === 0 ? 
-                <h3> No hay datos que coincidan con su busqueda </h3> :
-                this.state.datos.map((cancion, idx) => <Canciones key={cancion.title + idx} 
-                artistas={cancion} borrarCancion = { (id)=> this.borrar(id)} />)  }
             </div> 
             
             </section>
