@@ -4,9 +4,7 @@
     flex-wrap: wrap !important;
     justify-content: space-around;
     align-items: stretch;
-
-   
-    
+    background-color: black;
 }
 
 .botonMas{
@@ -15,22 +13,18 @@
     font-size: 1.3em;
     text-align: center;
     margin-top: 15px;
-    margin-left: 39%;
+    align-items: center;
+    background-color: rgb(206, 253, 210) ;
     }
-
+  
 .pm{
     padding: 8px 50px 5px 50px;
     margin-top: 7px;
-}
+  }
 
 .orientacion{
-width: 100%;
-display: flex;
-flex-wrap: wrap;
-align-items: flex-end;
-flex-direction: row-reverse;
-padding-right: 3%;
-padding-bottom: 1%;
+    padding: 1%;
+    text-align: end;
 }
 
 .columnas{
@@ -41,5 +35,4 @@ padding-bottom: 1%;
 .filas{
     background-color: red;
 }
-
 

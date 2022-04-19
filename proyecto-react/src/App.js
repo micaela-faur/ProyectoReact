@@ -2,6 +2,8 @@ import React from 'react';
 import Playlist from "./Components/Playlist/Playlist"
 import Canciones from "./Components/Canciones/Canciones"
 import Footer from './Components/Footer/Footer';
+import Buscador from './Components/Buscador/Buscador'
+
 
 
 function App() {
@@ -17,6 +19,7 @@ function App() {
       </header>
 
       <main>
+          
 
           <section class="card-container">
             <Playlist/> 

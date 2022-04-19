@@ -80,37 +80,29 @@ class Playlist extends Component{
         return(
             <React.Fragment> 
             <div className="botonMas"> 
-                <Buscador cancionesAFiltrar={(filtrar)=> this.filtrarCanciones(filtrar)} /> 
-                <button className="pm" type='button' onClick={() => this.pedirMas() }> Pedir Mas </button> 
-            </div>
+              <Buscador cancionesAFiltrar={(filtrar)=> this.filtrarCanciones(filtrar)} /> 
+              <button className="pm" type='button' onClick={() => this.pedirMas() }> Pedir Mas </button> 
+          </div>
 
             <div className='orientacion'>
                 <button onClick={() =>this.filas()}> Filas </button>
                 <button onClick={() =>this.columnas()}> Columnas </button>
-
             </div>
 
            
-             <section className={` ${this.state.ordenCanciones ==  "columnas" ?
-        "columnas" :
-        "filas"}`}>
+            <section className={` ${this.state.ordenCanciones ==  "columnas" ?
+            "columnas" :
+            "filas"}`}>
 
-            <div className = 'container' >
-
-           
-
-            {this.state.datos.length === 0 ? // if ternario: creamos un condicional porque si tarta en traer la info de la api, que me tire cargando, y sino que me traiga del estado el array con toda la info de las canciones.
-              // <h3> Cargando ...</h3>
-
-            
-               
-            
-                <img className='loader' src= "/imagenes/gifloader.gif" alt= "" /> : 
-                this.state.datos.length === 0 ? 
-                <h3> No hay datos que coincidan con su busqueda </h3> :
-                this.state.datos.map((cancion, idx) => <Canciones key={cancion.title + idx} 
-                artistas={cancion} borrarCancion = { (id)=> this.borrar(id)} />)  }
-            </div> 
+                <div className = 'container' >
+                    {this.state.datos.length === 0 ? // if ternario: creamos un condicional porque si tarta en traer la info de la api, que me tire cargando, y sino que me traiga del estado el array con toda la info de las canciones.
+                        <img className='loader' src= "/imagenes/gifloader.gif" alt= "" /> : 
+                        this.state.datos.length === 0 ? 
+                        <h3> No hay datos que coincidan con su busqueda </h3> :
+                        this.state.datos.map((cancion, idx) => <Canciones key={cancion.title + idx} 
+                        artistas={cancion} borrarCancion = { (id)=> this.borrar(id)} />)  
+                    }
+                </div> 
             
             </section>
             </React.Fragment>
