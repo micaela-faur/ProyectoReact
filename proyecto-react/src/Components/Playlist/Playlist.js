@@ -94,7 +94,7 @@ class Playlist extends Component{
                         <button onClick={() =>this.columnas()}> Columnas </button>
                     </div>
                     
-                    <div className={` container ${this.state.ordenCanciones ==  "columnas" ? "columnas" : "filas"}`}>
+                    <div className={`container ${this.state.ordenCanciones ==  "columnas" ? "columnas" : "filas"}`}>
                             {this.state.datosModificado ?  // si existe datos 
                             this.state.datosModificado.length > 0 ? // fijate si tienen la length mayor  a cero
                             this.state.datosModificado.map((cancion, idx) => <Canciones key={cancion.title + idx} // si es asi haceme el map
