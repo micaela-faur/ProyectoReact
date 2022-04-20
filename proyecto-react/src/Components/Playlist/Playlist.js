@@ -36,7 +36,8 @@ class Playlist extends Component{
      cancionesFiltradas = this.state.datos.filter( unaCancion => unaCancion.id !== id );
 
      this.setState({
-         datos: cancionesFiltradas // decimos que las canciones filtradas se carguen en el array segun la condicion del filter
+         datos: cancionesFiltradas, // decimos que las canciones filtradas se carguen en el array segun la condicion del filter
+         datosModificado: cancionesFiltradas
      })
 
 
@@ -79,45 +80,37 @@ class Playlist extends Component{
     }
 
     render(){
-        console.log('hola', this.state.datosModificado);
-       
+        console.log('hola', this.state.datosModificado)
         return(
-            <React.Fragment> 
-            <div className="botonMas"> 
-              <Buscador cancionesAFiltrar={(filtrar)=> this.filtrarCanciones(filtrar)} /> 
-              <button className="pm" type='button' onClick={() => this.pedirMas() }> Pedir Mas </button> 
-          </div>
-
-            <div className='orientacion'>
-                <button onClick={() =>this.filas()}> Filas </button>
-                <button onClick={() =>this.columnas()}> Columnas </button>
-            </div>
-
-           
-            <section className={` ${this.state.ordenCanciones ==  "columnas" ?
-            "columnas" :
-            "filas"}`}>
-
-                <div className = 'container' >
-                    {this.state.datos.length === 0 ? // if ternario: creamos un condicional porque si tarta en traer la info de la api, que me tire cargando, y sino que me traiga del estado el array con toda la info de las canciones.
-                        <img className='loader' src= "/imagenes/gifloader.gif" alt= "" /> : 
-                        this.state.datos.length === 0 ? 
-                        <h3> No hay datos que coincidan con su busqueda </h3> :
-                        this.state.datos.map((cancion, idx) => <Canciones key={cancion.title + idx} 
-                        artistas={cancion} borrarCancion = { (id)=> this.borrar(id)} />)  
-                    }
-                </div> 
-            
-            </section>
-            </React.Fragment>
+          <React.Fragment>
+              <div className='botonMas'>
+                <Buscador cancionesAFiltrar={(filtrar)=> this.filtrarCanciones(filtrar)} /> 
+                <button className="pm" type='button' onClick={() => this.pedirMas() }> Pedir Mas </button>
+              </div>
+                    
+              <section> 
+                    <div className='orientacion'>               
+                        <button onClick={() =>this.filas()}> Filas </button>                
+                        <button onClick={() =>this.columnas()}> Columnas </button>
+                    </div>
+                    
+                    <div className={` container ${this.state.ordenCanciones ==  "columnas" ? "columnas" : "filas"}`}>
+                            {this.state.datosModificado ?  // si existe datos 
+                            this.state.datosModificado.length > 0 ? // fijate si tienen la length mayor  a cero
+                            this.state.datosModificado.map((cancion, idx) => <Canciones key={cancion.title + idx} // si es asi haceme el map
+                                artistas={cancion} borrarCancion = { (id)=> this.borrar(id)} />) : 
+                                <h3 className='resultadosBusqueda'> No hay datos que coincidan con su busqueda </h3> : // si false osea si no existen datos me tira el loader
+                                <img className='loader' src= "/imagenes/gifloader.gif" alt= "" />
+                                }
+                    </div>
+              </section>
+          </React.Fragment>
         )
-
-    }
+       
+    } 
     
 
-
-
-}
+} 
 
 
 export default Playlist; 

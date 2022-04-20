@@ -1,10 +1,11 @@
 .container{    
-    display: flex !important ;
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
+    display: flex ;
+    flex-direction: row ;
+    flex-wrap: wrap;
     justify-content: space-around;
     align-items: stretch;
     background-color: black;
+   
 }
 
 .botonMas{
@@ -29,11 +30,12 @@
 }
 
 .columnas{
-    background-color: violet ;
+    flex-direction: column;
 }
 
 
-.filas{
-    background-color: red;
+
+.resultadosBusqueda{
+    color: cornsilk;
 }
 

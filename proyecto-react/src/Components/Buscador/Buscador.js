@@ -17,8 +17,6 @@ constructor(props){
 
     }
 
-
-
     obtenerDatos(datos){
         this.setState({
             busqueda: datos.target.value
@@ -26,11 +24,7 @@ constructor(props){
         },
             ()=> this.props.cancionesAFiltrar(this.state.busqueda)
         
-        
         )
-
-
-
     }
 
 
