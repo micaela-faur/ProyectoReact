@@ -24,7 +24,7 @@ class Playlist extends Component{
         .then( info => this.setState({
             datos: info.data,
             datosModificado: info.data,
-            limit: this.state.limit + 10
+            limit: this.state.limit 
         }))
         .catch(error => console.log(error))
     } 
